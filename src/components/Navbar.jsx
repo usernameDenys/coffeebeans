@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom'
-import { FiSearch } from "react-icons/fi";
 import { PiUser } from "react-icons/pi";
 import { BsBag } from "react-icons/bs";
 import { RiMenu3Fill } from "react-icons/ri";
@@ -10,13 +9,13 @@ import { IoIosArrowBack } from "react-icons/io";
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
     return (
-        <header className='flex items-center justify-between py-5 font-medium'>
+        <header className='flex items-center justify-between py-5 font-medium font-[Fraunces]'>
             <div className='flex items-center gap-2'>
                 <img src="/src/assets/icons/coffeeBeansIcon.svg" alt="Logo" className='w-10' />
-                <a href="/" className='text-3xl'>CoffeeBeans</a>
+                <a href="/" className='text-lg font-bold sm:text-3xl'>CoffeeBeans</a>
             </div>
 
-            <nav className='hidden sm:flex gap-5 text-sm text-gray-700'>
+            <nav className='hidden sm:flex gap-5 text-sm text-gray-700 font-semibold'>
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
                     <span>Home</span>
                     <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
@@ -36,10 +35,9 @@ const Navbar = () => {
 
             </nav>
             <div className='flex items-center gap-6'>
-                <FiSearch className='w-5 cursor-pointer' />
                 <div className='group relative'>
                     <PiUser className='w-5 cursor-pointer' />
-                    <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
+                    <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20'>
                         <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
                             <li className='cursor-pointer hover:text-black'>My Account</li>
                             <li className='cursor-pointer hover:text-black'>Orders</li>
@@ -54,16 +52,16 @@ const Navbar = () => {
                 <RiMenu3Fill onClick={() => setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
             </div>
             {/* Mobile menu */}
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
-                <div className='flex flex-col text-gray-600'>
-                    <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
+            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full z-50' : 'w-0'}`}>
+                <div className='flex flex-col items-center text-gray-600 font-semibold'>
+                    <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer hover:font-bold text-gray-800'>
                         <IoIosArrowBack className='h-4 rotate-180' />
                         <span>Back</span>
                     </div>
-                    <NavLink onClick={() => setVisible(false)} to='/' className='py-2 pl-6 cursor-pointer hover:bg-gray-100'><span>Home</span></NavLink>
-                    <NavLink onClick={() => setVisible(false)} to='/collection' className='py-2 pl-6 cursor-pointer hover:bg-gray-100'><span>Collection</span></NavLink>
-                    <NavLink onClick={() => setVisible(false)} to='/about' className='py-2 pl-6 cursor-pointer hover:bg-gray-100'><span>About</span></NavLink>
-                    <NavLink onClick={() => setVisible(false)} to='/contact' className='py-2 pl-6 cursor-pointer hover:bg-gray-100'><span>Contact</span></NavLink>
+                    <NavLink onClick={() => setVisible(false)} to='/' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>Home</span></NavLink>
+                    <NavLink onClick={() => setVisible(false)} to='/collection' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>Collection</span></NavLink>
+                    <NavLink onClick={() => setVisible(false)} to='/about' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>About</span></NavLink>
+                    <NavLink onClick={() => setVisible(false)} to='/contact' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>Contact</span></NavLink>
                 </div>
             </div>
         </header>
