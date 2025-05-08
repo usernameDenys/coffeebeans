@@ -1,20 +1,23 @@
 import { createContext } from "react";
 import { products } from "../assets/assets";
 
-const ShopContext = createContext();
 
-const ShopContextProvider = ({ children }) => {
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const ShopContext = createContext();
+
+const ShopContextProvider = (props) => {
 
     const currency = "€";
 
     const value = {
         products,
-        currency,
+        currency
     }
 
     return (
-        <ShopContext.Provider value={{ value }}>
-            {children}
+        <ShopContext.Provider value={value}>
+            {props.children}
         </ShopContext.Provider>
     );
 }
