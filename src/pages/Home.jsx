@@ -4,11 +4,11 @@ import LatestCollection from '../components/LatestCollection'
 
 const Home = () => {
     return (
-        <div>
+        <main>
             <Hero />
             <LatestCollection />
 
-        </div>
+        </main>
     )
 }
 
