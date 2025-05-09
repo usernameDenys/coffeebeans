@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import { PiUser } from "react-icons/pi";
 import { BsBag } from "react-icons/bs";
@@ -8,6 +8,14 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
+    useEffect(() => {
+        if (visible) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+    }, [visible]);
+
     return (
         <header className='flex items-center justify-between py-5 font-medium font-[Fraunces]'>
             <div className='flex items-center gap-2'>
@@ -38,7 +46,7 @@ const Navbar = () => {
                 <div className='group relative'>
                     <PiUser className='w-5 cursor-pointer' />
                     <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20'>
-                        <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
+                        <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-[#66D2CF] text-[#FEFCF7] rounded'>
                             <li className='cursor-pointer hover:text-black'>My Account</li>
                             <li className='cursor-pointer hover:text-black'>Orders</li>
                             <li className='cursor-pointer hover:text-black'>Logout</li>
@@ -52,7 +60,7 @@ const Navbar = () => {
                 <RiMenu3Fill onClick={() => setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
             </div>
             {/* Mobile menu */}
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full z-50' : 'w-0'}`}>
+            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-[#66D2CF] transition-all ${visible ? 'w-full z-50' : 'w-0'}`}>
                 <div className='flex flex-col items-center text-gray-600 font-semibold'>
                     <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer hover:font-bold text-gray-800'>
                         <IoIosArrowBack className='h-4 rotate-180' />

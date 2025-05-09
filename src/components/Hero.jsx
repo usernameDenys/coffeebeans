@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
-        <section className='relative flex flex-col sm:flex-row border border-gray-400 h-[400px] sm:h-[600px]'>
+        <section className='relative flex flex-col sm:flex-row rounded border border-gray-400 h-[400px] sm:h-[600px]'>
             <img
                 src="../src/assets/images/Hero.jpg"
                 alt="CoffeeBeans background"
