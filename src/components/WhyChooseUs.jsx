@@ -12,18 +12,18 @@ const WhyChooseUs = () => {
                 you a more impactful experience on every level.</p>
             <div className='flex flex-col sm:flex-row gap-6 sm:gap-8 text-center pb-12 sm:pb-20 text-sm sm:text-base '>
                 <article className='flex flex-col items-center gap-4 w-full sm:w-1/3 p-6 bg-[#0E8784] rounded ' >
-                    <img src={Bean} alt="" />
+                    <img src={Bean} alt="coffee bean image" />
                     <h3 className='text-sm sm:text-2xl font-bold'>Best quality</h3>
                     <p className='font-[Barlow] text-sm'>Discover an endless variety of the world’s best artisan coffee from each of our roasters.</p>
                 </article>
                 <article className='flex flex-col items-center gap-4 w-full sm:w-1/3 p-6 bg-[#0E8784] rounded ' >
-                    <img src={GiftBox} alt="" />
+                    <img src={GiftBox} alt="Gift box image" />
 
                     <h3 className='text-sm sm:text-2xl font-bold'>Exclusive benefits</h3>
                     <p className='font-[Barlow] text-sm'>Special offers and swag when you subscribe, including 30% off your first shipment.</p>
                 </article>
                 <article className='flex flex-col items-center gap-4 w-full sm:w-1/3 p-6 bg-[#0E8784] rounded ' >
-                    <img src={Delivery} alt="" />
+                    <img src={Delivery} alt="Truck image" />
                     <h3 className='text-sm sm:text-2xl font-bold'>Free shipping</h3>
                     <p className='font-[Barlow] text-sm'>We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.</p>
                 </article>
