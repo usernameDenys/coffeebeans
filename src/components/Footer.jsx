@@ -9,11 +9,11 @@ const Footer = () => {
         <div>
             <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
                 <div>
-                    <div className='flex items-center gap-2 mb-10'>
+                    <div className='flex items-center gap-2 mb-5'>
                         <img src={coffeeBeansIcon} alt="cooffeebeans logo" />
                         <a href="/" className='text-lg font-bold sm:text-3xl'>CoffeeBeans</a>
                     </div>
-                    <p className='w-full md:w-2/3 text-gray-600 font-[Barlow]'>
+                    <p className='w-foll md:w-1/2 text-gray-600 font-[Barlow]'>
                         This website was created by <strong> Holenko Denys</strong> for educational purposes only and is not intended for commercial use.
                         Product information and images were sourced from <a href="https://www.coffeebean.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">coffeebean.com</a>.
                     </p>
