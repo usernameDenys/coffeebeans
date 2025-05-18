@@ -1,13 +1,15 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import { PiUser } from "react-icons/pi";
 import { BsBag } from "react-icons/bs";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
+import { ShopContext } from '../context/ShopContext';
 
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
+    const { getCartCount } = useContext(ShopContext);
     useEffect(() => {
         if (visible) {
             document.body.classList.add('overflow-hidden');
@@ -55,7 +57,7 @@ const Navbar = () => {
                 </div>
                 <Link to='/cart' className='relative'>
                     <BsBag className='w-5 min-w-5' />
-                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>10</span>
+                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</span>
                 </Link>
                 <RiMenu3Fill onClick={() => setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
             </div>
