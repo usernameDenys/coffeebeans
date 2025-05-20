@@ -46,7 +46,7 @@ const Navbar = () => {
             </nav>
             <div className='flex items-center gap-6'>
                 <div className='group relative'>
-                    <PiUser className='w-5 cursor-pointer' />
+                    <Link to={'/login'}><PiUser className='w-5 cursor-pointer' /></Link>
                     <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20'>
                         <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-[#66D2CF] text-[#FEFCF7] rounded'>
                             <li className='cursor-pointer hover:text-black'>My Account</li>
