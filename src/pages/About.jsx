@@ -4,7 +4,7 @@ import about from '../assets/images/about.jpg'
 
 const About = () => {
     return (
-        <div>
+        <>
             <div className='text-2xl text-center pt-8 border-t'>
                 <Title titlePart1={'ABOUT'} titlePart2={'US'} />
             </div>
@@ -29,7 +29,7 @@ const About = () => {
                 </articl>
             </div>
 
-        </div>
+        </>
     )
 }
 
