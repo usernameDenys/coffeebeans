@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
-import { toast } from 'react-toastify';
+
 
 
 const Product = () => {
@@ -11,7 +11,7 @@ const Product = () => {
     const [imagePreview, setImagePreview] = useState('');
     const [size, setSize] = useState('')
 
-    const notify = () => toast("Product added to cart!");
+
 
 
     const fetchProduct = async () => {
@@ -26,7 +26,6 @@ const Product = () => {
 
     const handleAddToCart = () => {
         addToCart(productData._id, size);
-        notify();
     }
 
     useEffect(() => {
