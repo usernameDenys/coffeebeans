@@ -2,12 +2,17 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
+
+
 const Product = () => {
     const { productId } = useParams();
     const { products, currency, addToCart } = useContext(ShopContext);
     const [productData, setProductData] = useState(false);
     const [imagePreview, setImagePreview] = useState('');
     const [size, setSize] = useState('')
+
+
+
 
     const fetchProduct = async () => {
         products.map((item) => {
@@ -17,6 +22,10 @@ const Product = () => {
                 return null;
             }
         })
+    }
+
+    const handleAddToCart = () => {
+        addToCart(productData._id, size);
     }
 
     useEffect(() => {
@@ -53,7 +62,7 @@ const Product = () => {
                             ))}
                         </ul>
                     </article>
-                    <button onClick={() => addToCart(productData._id, size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 rounded'>ADD TO CART</button>
+                    <button onClick={handleAddToCart} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 rounded'>ADD TO CART</button>
                     <hr className='mt-8 sm:4/5' />
                     <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
                         <p>100% Original product.</p>

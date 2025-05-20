@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext();
 
@@ -12,11 +13,14 @@ const ShopContextProvider = (props) => {
     const currency = "$";
     const [cartItems, setCartItems] = useState({});
     const navigate = useNavigate(); // to navigate to different pages
+    const notify = () => toast("Product added to cart!");
 
     const addToCart = async (itemId, size) => {
         if (!size) {
             toast.error('Please select a size');
             return;
+        } else {
+            notify();
         }
 
         let cartData = structuredClone(cartItems);
