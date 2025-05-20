@@ -6,7 +6,7 @@ import { MdAlternateEmail } from "react-icons/md";
 const Footer = () => {
     return (
 
-        <div>
+        <>
             <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm font-[Barlow]'>
                 <div>
                     <div className='flex items-center gap-2 mb-5'>
@@ -44,7 +44,7 @@ const Footer = () => {
                 </p>
             </div>
 
-        </div>
+        </>
 
     )
 }
