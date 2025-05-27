@@ -9,7 +9,7 @@ import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
-    const { getCartCount } = useContext(ShopContext);
+    const { getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
     useEffect(() => {
         if (visible) {
             document.body.classList.add('overflow-hidden');
@@ -17,6 +17,13 @@ const Navbar = () => {
             document.body.classList.remove('overflow-hidden');
         }
     }, [visible]);
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        setToken('');
+        setCartItems({});
+        navigate('/login');
+    };
 
     return (
         <header className='flex items-center justify-between py-5 font-medium font-[Fraunces]'>
@@ -46,14 +53,16 @@ const Navbar = () => {
             </nav>
             <div className='flex items-center gap-6'>
                 <div className='group relative'>
-                    <Link to={'/login'}><PiUser className='w-5 cursor-pointer' /></Link>
-                    <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20'>
-                        <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-[#66D2CF] text-[#FEFCF7] rounded'>
-                            <li className='cursor-pointer hover:text-black'>My Account</li>
-                            <li className='cursor-pointer hover:text-black'>Orders</li>
-                            <li className='cursor-pointer hover:text-black'>Logout</li>
-                        </ul>
-                    </nav>
+                    <PiUser onClick={() => (token ? null : navigate('/login'))} className='w-5 cursor-pointer' />
+                    {token && (
+                        <nav className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20'>
+                            <ul className='flex flex-col gap-2 w-36 py-3 px-5 bg-[#66D2CF] text-[#FEFCF7] rounded'>
+                                <li className='cursor-pointer hover:text-black'>My Account</li>
+                                <li className='cursor-pointer hover:text-black'>Orders</li>
+                                <li onClick={logout} className='cursor-pointer hover:text-black'>Logout</li>
+                            </ul>
+                        </nav>
+                    )}
                 </div>
                 <Link to='/cart' className='relative'>
                     <BsBag className='w-5 min-w-5' />

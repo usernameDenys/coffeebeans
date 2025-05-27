@@ -16,6 +16,7 @@ const ShopContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [products, setProducts] = useState([]);
+    const [token, setToken] = useState('');
 
     const navigate = useNavigate(); // to navigate to different pages
     const notify = () => toast("Product added to cart!");
@@ -108,6 +109,8 @@ const ShopContextProvider = (props) => {
         getCartAmount,
         navigate,
         backendUrl,
+        token,
+        setToken,
     }
 
     return (

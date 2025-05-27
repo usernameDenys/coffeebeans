@@ -1,11 +1,63 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useState, useEffect } from 'react'
+import { ShopContext } from '../context/ShopContext'
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const Login = () => {
-    const [currentState, setCurrentState] = useState('Login')
+    const [currentState, setCurrentState] = useState('Login');
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { token, setToken, navigate, backendUrl } = useContext(ShopContext);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
+        try {
+            if (currentState === 'Sign Up') {
+
+                const response = await axios.post(backendUrl + '/api/user/register', {
+                    name,
+                    lastName,
+                    email,
+                    password,
+                });
+
+                const token = response.data.data.token;
+                if (response.data.success) {
+                    setToken(token);
+                    localStorage.setItem('token', token);
+                    toast.success('Signup Successful!');
+                } else {
+                    toast.error(response.data.message);
+                }
+
+            } else {
+                const response = await axios.post(backendUrl + '/api/user/login', {
+                    email,
+                    password,
+                });
+                const token = response.data.data.token;
+                if (response.data.success) {
+                    setToken(token);
+                    localStorage.setItem('token', token);
+                    toast.success('Login Successful!');
+                } else {
+                    toast.error(response.data.message);
+                }
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message);
+        }
     }
+
+    useEffect(() => {
+        if (token) {
+            navigate('/');
+        }
+    }, [token]);
     return (
         <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800 font-[Barlow]' action="#">
             <div className='inline-flex items-center gap-2 mb-2 mt-10'>
@@ -14,24 +66,32 @@ const Login = () => {
             </div>
             <div className='w-full px-3 py-2 flex flex-col gap-4'>
                 {currentState === 'Login' ? null : (<input
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
                     type='text'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='First Name'
                     required
                 />)}
-                {/* {currentState === 'Login' ? null : (<input
+                {currentState === 'Login' ? null : (<input
+                    onChange={(e) => setLastName(e.target.value)}
+                    value={lastName}
                     type='text'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Last Name'
                     required
-                />)} */}
+                />)}
                 <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     type='email'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Email'
                     required
                 />
                 <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                     type='password'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Password'
