@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
-import { products } from "../assets/assets";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useEffect, useState } from "react";
+import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,8 +11,12 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const currency = "$";
+
     const [cartItems, setCartItems] = useState({});
+    const [products, setProducts] = useState([]);
+
     const navigate = useNavigate(); // to navigate to different pages
     const notify = () => toast("Product added to cart!");
 
@@ -72,6 +77,24 @@ const ShopContextProvider = (props) => {
         return totalAmount;
     };
 
+    const getProductsData = async () => {
+        try {
+            const response = await axios.get(backendUrl + '/api/product/list');
+            if (response.data.success) {
+                setProducts(response.data.products);
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message);
+        }
+    };
+
+    useEffect(() => {
+        getProductsData();
+    }, []);
+
 
 
     const value = {
@@ -84,6 +107,7 @@ const ShopContextProvider = (props) => {
         updateCartQuantity,
         getCartAmount,
         navigate,
+        backendUrl,
     }
 
     return (
