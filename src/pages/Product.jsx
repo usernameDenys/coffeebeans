@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
@@ -30,7 +31,7 @@ const Product = () => {
 
     useEffect(() => {
         fetchProduct();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [productId, products])
     return productData ? (
         <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 font-[Barlow]'>
@@ -54,6 +55,18 @@ const Product = () => {
                     <h2 className='font-medium text-2xl mt-2 '>{productData.name}</h2>
                     <p className='mt-10 text-3xl font-medium'>{currency}{productData.price}</p>
                     <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
+                    <div className='flex gap-2 mt-5'>
+                        <div className='flex flex-col gap-2'>
+                            <h5>Brew type:</h5>
+                            <p className='w-32 text-center py-2 px-4 bg-gray-100 rounded'>{productData.brew_type}</p>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <h5>Roast level:</h5>
+                            <p className='w-32 text-center py-2 px-4 bg-gray-100 rounded'>{productData.roast_level}</p>
+                        </div>
+
+                    </div>
+
                     <article className='flex flex-col gap-4 my-8'>
                         <h4>Select size:</h4>
                         <ul className='flex gap-2'>
