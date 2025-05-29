@@ -71,6 +71,8 @@ const Login = () => {
                     type='text'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='First Name'
+                    name='name'
+                    autoComplete='off'
                     required
                 />)}
                 {currentState === 'Login' ? null : (<input
@@ -79,6 +81,8 @@ const Login = () => {
                     type='text'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Last Name'
+                    name='lastName'
+                    autoComplete='off'
                     required
                 />)}
                 <input
@@ -87,6 +91,8 @@ const Login = () => {
                     type='email'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Email'
+                    name='email'
+                    autoComplete='off'
                     required
                 />
                 <input
@@ -95,6 +101,8 @@ const Login = () => {
                     type='password'
                     className='w-Full px-3 py-2 border border-gray-880'
                     placeholder='Password'
+                    name='pwd'
+                    autoComplete='off'
                     required
                 />
 
