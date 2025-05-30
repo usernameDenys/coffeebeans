@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { PiUser } from "react-icons/pi";
 import { BsBag } from "react-icons/bs";
 import { RiMenu3Fill } from "react-icons/ri";
-import { IoIosArrowBack } from "react-icons/io";
 import { ShopContext } from '../context/ShopContext';
+import { RiCloseLargeFill } from "react-icons/ri";
 
 
 const Navbar = () => {
@@ -72,9 +72,8 @@ const Navbar = () => {
             {/* Mobile menu */}
             <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-[#66D2CF] transition-all ${visible ? 'w-full z-50' : 'w-0'}`}>
                 <div className='flex flex-col items-center text-gray-600 font-semibold'>
-                    <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer hover:font-bold text-gray-800'>
-                        <IoIosArrowBack className='h-4 rotate-180' />
-                        <span>Back</span>
+                    <div onClick={() => setVisible(false)} className='py-10 pl-6 cursor-pointer'>
+                        <RiCloseLargeFill />
                     </div>
                     <NavLink onClick={() => setVisible(false)} to='/' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>Home</span></NavLink>
                     <NavLink onClick={() => setVisible(false)} to='/collection' className='py-2 pl-6 cursor-pointer hover:font-bold text-gray-800'><span>Collection</span></NavLink>
@@ -87,4 +86,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-''
