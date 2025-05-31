@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
     const [currentState, setCurrentState] = useState('Login');
@@ -11,6 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { token, setToken, navigate, backendUrl } = useContext(ShopContext);
+    const [showPassword, setShowPassword] = useState(false);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -89,22 +91,29 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     type='email'
-                    className='w-Full px-3 py-2 border border-gray-880'
+                    className='w-full px-3 py-2 border border-gray-880'
                     placeholder='Email'
                     name='email'
                     autoComplete='off'
                     required
                 />
-                <input
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    type='password'
-                    className='w-Full px-3 py-2 border border-gray-880'
-                    placeholder='Password'
-                    name='pwd'
-                    autoComplete='off'
-                    required
-                />
+                <div className="relative w-full">
+                    <input
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        type={showPassword ? 'text' : 'password'}
+                        className="w-full px-3 py-2 border border-gray-880  pr-10"
+                        placeholder='Password'
+                        name='pwd'
+                        autoComplete='off'
+                        required
+                    />
+                    <span
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 hover:text-black">
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </span>
+                </div>
 
             </div>
             <div className='w-full flex justify-between text-sm mt-[-8px] px-3'>
