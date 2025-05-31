@@ -12,6 +12,9 @@ import Orders from './pages/Orders'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { ToastContainer } from 'react-toastify';
+import TermsOfSale from './pages/TermsOfSale'
+import TermsOfUse from './pages/TermsOfUse'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const App = () => {
   return (
@@ -28,6 +31,9 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Orders />} />
+        <Route path='/sale-terms' element={<TermsOfSale />} />
+        <Route path='/use-terms' element={<TermsOfUse />} />
+        <Route path='/privacy' element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
     </div>
