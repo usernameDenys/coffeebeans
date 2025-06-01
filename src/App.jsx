@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import TermsOfSale from './pages/TermsOfSale'
 import TermsOfUse from './pages/TermsOfUse'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import UserInfo from './pages/UserInfo'
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/sale-terms' element={<TermsOfSale />} />
         <Route path='/use-terms' element={<TermsOfUse />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
+        <Route path='/user/me' element={<UserInfo />} />
       </Routes>
       <Footer />
     </div>
